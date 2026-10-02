@@ -2,6 +2,8 @@ import { useQuery } from "@apollo/client/react"
 import { useParams } from "react-router-dom"
 import { GET_GAME } from "../graphql/queries/get-game"
 import type { IGame } from "../interfaces/games.interface"
+import GameAuthors from "../components/GameAuthors"
+import GameReviews from "../components/GameReviews"
 
 const GamePage = () => {
     const { id } = useParams()
@@ -23,6 +25,8 @@ const GamePage = () => {
                     <li key={p}>{p}</li>
                 ))}
             </ul>
+            <GameReviews gameId={data.game.id} />
+            <GameAuthors gameId={data.game.id} />
         </div>
     )
 }
